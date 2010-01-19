@@ -1,6 +1,6 @@
 /* LiteSQL - SelectQuery implementation
  * 
- * By Tero Laitinen 
+ * The list of contributors at http://litesql.sf.net/ 
  * 
  * See LICENSE for copyright information. */
 #include "compatibility.hpp"
@@ -34,11 +34,11 @@ SelectQuery & SelectQuery::source(std::string s, std::string alias) {
     return *this;
 }
 SelectQuery & SelectQuery::where(const Expr & w) { 
-    _where = litesql::And(RawExpr(_where),w).asString();	
+    _where = (RawExpr(_where) && w).asString();	
     return *this;
 }
 SelectQuery & SelectQuery::where(std::string w) { 
-    _where = litesql::And(RawExpr(_where),RawExpr(w)).asString();
+    _where = (RawExpr(_where) && RawExpr(w)).asString();
     return *this;
 }
 SelectQuery & SelectQuery::groupBy(std::string gb) { 

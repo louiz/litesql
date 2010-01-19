@@ -1,6 +1,6 @@
 /* LiteSQL 
  * 
- * By Tero Laitinen 
+ * The list of contributors at http://litesql.sf.net/ 
  * 
  * See LICENSE for copyright information. */
 
@@ -11,7 +11,7 @@
 
 #ifdef HAVE_LIBMYSQLCLIENT
 
-#include <mysql/mysql.h>
+#include <mysql.h>
 #include "litesql/except.hpp"
 #include "litesql/types.hpp"
 #include "litesql/string.hpp"
@@ -51,7 +51,7 @@ public:
         virtual Record fetchOne();
         virtual ~Cursor();
     };
-    MySQL(string connInfo);
+    MySQL(const string& connInfo);
     virtual bool supportsSequences() const;
     virtual string getRowIDType() const;
     virtual string getInsertID() const;

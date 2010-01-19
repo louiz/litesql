@@ -1,16 +1,15 @@
 /* LiteSQL 
  * 
- * By Tero Laitinen 
+ * The list of contributors at http://litesql.sf.net/ 
  * 
  * See LICENSE for copyright information. */
 
 
-#ifndef _litesql_selectquery_hpp
-#define _litesql_selectquery_hpp
+#ifndef litesql_selectquery_hpp
+#define litesql_selectquery_hpp
 
 #include "litesql/utils.hpp"
 #include "litesql/expr.hpp"
-#include "litesql/dbtypes.hpp"
 /** \file selectquery.hpp
     contains SelectQuery-class. See \ref usage_selecting_persistents */
 namespace litesql {

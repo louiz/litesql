@@ -1,6 +1,6 @@
 /* LiteSQL 
  * 
- * By Tero Laitinen 
+ * The list of contributors at http://litesql.sf.net/ 
  * 
  * See LICENSE for copyright information. */
 
@@ -51,7 +51,7 @@ public:
         virtual Record fetchOne();
         virtual ~Cursor();
     };
-    ODBCBackend(string database);
+    ODBCBackend(const string& database);
     virtual bool supportsSequences() const;
     virtual string getInsertID() const;
     virtual void begin() const;

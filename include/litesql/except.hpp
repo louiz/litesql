@@ -1,6 +1,6 @@
 /* LiteSQL 
  * 
- * By Tero Laitinen 
+ * The list of contributors at http://litesql.sf.net/ 
  * 
  * See LICENSE for copyright information. */
 
@@ -23,7 +23,7 @@ public:
 	virtual const char* what() const throw() {
 		return msg.c_str();
 	}
-    friend std::ostream &operator<<(std::ostream &os, Except &e) {
+    friend std::ostream &operator<<(std::ostream &os, const Except &e) {
         os << e.msg;
         return os;
     }

@@ -1,6 +1,6 @@
 /* LiteSQL - MySQL-backend implementation
  * 
- * By Tero Laitinen 
+ * The list of contributors at http://litesql.sf.net/ 
  * 
  * See LICENSE for copyright information. */
 #include "compatibility.hpp"
@@ -86,7 +86,7 @@ MySQL::Cursor::~Cursor() {
     mysql_free_result(res);
     mysql_close(&conn);
 }
-MySQL::MySQL(string connInfo) {
+MySQL::MySQL(const string& connInfo) {
     Split params(connInfo,";");
     host = "localhost";
     int port = 0;

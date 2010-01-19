@@ -1,6 +1,6 @@
 /* LiteSQL 
  * 
- * By Tero Laitinen 
+ * The list of contributors at http://litesql.sf.net/ 
  * 
  * See LICENSE for copyright information. */
 
@@ -50,7 +50,7 @@ public:
         virtual Record fetchOne();
         virtual ~Cursor();
     };
-    PostgreSQL(string connInfo);
+    PostgreSQL(const string& connInfo);
     virtual bool supportsSequences() const;
     virtual void begin() const;
     virtual void commit() const;

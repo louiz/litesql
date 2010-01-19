@@ -1,6 +1,6 @@
 /* LiteSQL - UpdateQuery implementation
  * 
- * By Tero Laitinen 
+ * The list of contributors at http://litesql.sf.net/ 
  * 
  * See LICENSE for copyright information. */
 #include "compatibility.hpp"
@@ -8,7 +8,7 @@
 namespace litesql {
 using namespace std;
 UpdateQuery& UpdateQuery::where(const Expr& e) {
-    _where = litesql::And(RawExpr(_where),e).asString();
+    _where = (RawExpr(_where) && e).asString();
     return *this;
 }
 UpdateQuery& UpdateQuery::set(FieldType f, string value) {
