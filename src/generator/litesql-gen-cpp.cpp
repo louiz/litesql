@@ -171,7 +171,8 @@ public:
                     fprintf(hpp, "%s%s\n", ind.c_str(), bodyLines[i].c_str());
                 fprintf(hpp, "%s}\n", ind.c_str());
             } else {
-                fprintf(hpp, ";\n");
+                if (!isTemplate)
+                    fprintf(hpp, ";\n");
                 paramString = "";
                 for (size_t i = 0; i < params.size(); i++) {
                     if (i > 0)
