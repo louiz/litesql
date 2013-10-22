@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 2.6)
 enable_language(C)
 enable_language(CXX)
 
+OPTION(BUILD_SHARED_LIBS "Build shared libraries." ON)
+
 if (MSVC)
   option(LITESQL_MSVC_MT "link with /MT instead of /MD (use dlls versus static linked, change also wxWidgets_LIB_DIR)" ON) 
   # see http://msdn.microsoft.com/en-us/library/2kzt1wy3%28VS.71%29.aspx   

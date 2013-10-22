@@ -35,12 +35,13 @@ else (LITESQL_WITH_SAX_PARSER)
           litesql-gen.hpp)
 endif(LITESQL_WITH_SAX_PARSER)
 
-add_library(model ${libmodel_SOURCES}) 
+
+add_library(model STATIC ${libmodel_SOURCES})
+
 add_executable(litesql-gen ${litesql-gen_SOURCES})
 add_executable(ddl2litesql ${ddl2litesql_SOURCES})
-
-target_link_libraries (litesql-gen litesql litesql-util model ${EXPAT_LIBRARIES})
-target_link_libraries (ddl2litesql litesql-util model ${EXPAT_LIBRARIES})
+target_link_libraries (litesql-gen litesql litesql-util model ${BACKEND_LIBRARIES} ${EXPAT_LIBRARIES})
+target_link_libraries (ddl2litesql litesql litesql-util model ${BACKEND_LIBRARIES} ${EXPAT_LIBRARIES})
 
 if (LITESQL_WITH_UI)
   add_subdirectory(ui)
@@ -49,8 +50,6 @@ if (LITESQL_WITH_UI)
 #    add_subdirectory(win32-ui)
 #  endif(MSVC)
 endif(LITESQL_WITH_UI)
-
-
 
 install(TARGETS litesql-gen RUNTIME DESTINATION bin COMPONENT generator)
 INCLUDE_DIRECTORIES(../library ${EXPAT_INCLUDE_DIRS})
