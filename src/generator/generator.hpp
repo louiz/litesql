@@ -30,7 +30,7 @@ namespace litesql {
     virtual const char* getTarget() const;
     virtual bool generateCode(const ObjectModel* model)=0;
 
-    CodeGenerator* const getParentGenerator() const { return m_pParentGenerator; };
+    const CodeGenerator* getParentGenerator() const { return m_pParentGenerator; };
     void setParentGenerator(CodeGenerator* parent)  { m_pParentGenerator=parent; };
 
     bool generate(const xml::ObjectSequence& objects);

@@ -43,7 +43,7 @@ struct options_t {
   vector<string> targets;
 };
 
-options_t options = {"","","",true,false};
+options_t options = {"","","",true,false, {}};
 
 int parseArgs(int argc, char **argv) 
 {
