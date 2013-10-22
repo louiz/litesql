@@ -761,7 +761,7 @@ void writeObjBaseMethods(Class& cl, const xml::Object& o) {
     gen::Method del("del", "void");
     del.virtual_()
         .body("if (typeIsCorrect() == false) {")
-        .body("    std::auto_ptr<" + o.name + "> p(upcastCopy());")
+        .body("    const std::unique_ptr<" + o.name + "> p(upcastCopy());")
         .body("    p->delRelations();")
         .body("    p->onDelete();")
         .body("    p->delRecord();")
@@ -775,8 +775,8 @@ void writeObjBaseMethods(Class& cl, const xml::Object& o) {
     gen::Method typeIsCorrect("typeIsCorrect", "bool");    
     typeIsCorrect.body("return type == type__;").virtual_();
     
-    gen::Method upcast("upcast", "std::auto_ptr<" + o.name + ">");
-    gen::Method upcastCopy("upcastCopy", "std::auto_ptr<" + o.name + ">");
+    gen::Method upcast("upcast", "std::unique_ptr<" + o.name + ">");
+    gen::Method upcastCopy("upcastCopy", "std::unique_ptr<" + o.name + ">");
     Split childrenNames;
     o.getChildrenNames(childrenNames);
     
@@ -786,7 +786,7 @@ void writeObjBaseMethods(Class& cl, const xml::Object& o) {
       upcastCopy.body(o.name + "* np = NULL;");
       for (size_t i = 0; i < childrenNames.size(); i++) {
         upcast.body("if (type == " + childrenNames[i] + "::type__)")
-            .body("    return auto_ptr<" + o.name + ">(new " + childrenNames[i] 
+            .body("    return unique_ptr<" + o.name + ">(new " + childrenNames[i] 
                   + "(select<" + childrenNames[i] 
                   + ">(*db, Id == id).one()));");
         upcastCopy.body("if (type == " + quote(childrenNames[i]) + ")")
@@ -804,9 +804,9 @@ void writeObjBaseMethods(Class& cl, const xml::Object& o) {
     }
     upcastCopy
         .body("np->inDatabase = inDatabase;")
-        .body("return auto_ptr<" + o.name + ">(np);");
+        .body("return unique_ptr<" + o.name + ">(np);");
     
-    upcast.body("return auto_ptr<" + o.name 
+    upcast.body("return unique_ptr<" + o.name 
                 + ">(new " + o.name + "(*this));");
 
     for (size_t i = 0; i < o.methods.size(); i++) {
@@ -1212,6 +1212,7 @@ void CppGenerator::writeCPPClasses(const ObjectModel* model)
     fprintf(hpp, "#ifndef %s\n", defName.c_str());
     fprintf(hpp, "#define %s\n", defName.c_str());
     fprintf(hpp, "#include \"litesql.hpp\"\n");
+    fprintf(hpp, "#include <memory>\n");
     if (!model->db->include.empty()) 
         fprintf(hpp, "#include \"%s\"\n", model->db->include.c_str());
     fprintf(cpp, "#include \"%s\"\n", hppName.c_str());

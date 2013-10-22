@@ -10,6 +10,7 @@
 #include "litesql/except.hpp"
 #include "litesql/selectquery.hpp"
 #include <map>
+#include <memory>
 #include <algorithm>
 
 namespace litesql {
@@ -222,7 +223,7 @@ Database::Database(const string& backend, const string& conn)
     Records Database::query(const string &q) const {
         if (verbose)
             cerr << q << endl;
-        auto_ptr<Backend::Result> r(backend->execute(q));
+        const unique_ptr<Backend::Result> r(backend->execute(q));
         return r->records();
     }
 
