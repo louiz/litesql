@@ -1,5 +1,6 @@
 set(LIBNAME litesql)
 
+
 ##############################################################################
 # litesql library
 
@@ -54,7 +55,11 @@ set(litesql_util_SOURCES
             ../../include/litesql/string.hpp
             )
 add_library(litesql-util STATIC ${litesql_util_SOURCES})
-target_link_libraries (litesql-util ${BACKEND_LIBRARIES} ${EXPAT_LIBRARIES})
+# This compile flag is required when building a shared library from static
+# libraries
+set_target_properties(litesql-util PROPERTIES COMPILE_FLAGS -fPIC)
+target_link_libraries(litesql-util ${BACKEND_LIBRARIES} ${EXPAT_LIBRARIES})
+
 
 ##############################################################################
 # litesql_sqlite library
@@ -70,17 +75,21 @@ if (LITESQL_WITH_SQLITE3)
                 sqlite3ext.h)
   endif(NOT SQLITE3_FOUND)
 
-add_library(${LIBNAME}_sqlite STATIC ${${LIBNAME}_sqlite_SRC})
-target_link_libraries (litesql sqlite3 ${EXPAT_LIBRARIES})
+add_library(${LIBNAME}_sqlite ${${LIBNAME}_sqlite_SRC})
+target_link_libraries(litesql sqlite3 ${EXPAT_LIBRARIES})
+set_target_properties(${LIBNAME}_sqlite PROPERTIES COMPILE_FLAGS -fPIC)
 endif (LITESQL_WITH_SQLITE3)
+
 
 ##############################################################################
 # litesql_mysql library
 ##############################################################################
 if (LITESQL_WITH_MYSQL)
-  add_library(${LIBNAME}_mysql
+  add_library(${LIBNAME}_mysql STATIC
               mysql.cpp)
+set_target_properties(${LIBNAME}_mysql PROPERTIES COMPILE_FLAGS -fPIC)
 endif (LITESQL_WITH_MYSQL)
+
 
 ##############################################################################
 # litesql_ocilib library
@@ -90,6 +99,7 @@ if (LITESQL_WITH_OCILIB)
               ocilib_backend.cpp
               ocilib_backend.hpp
   )
+set_target_properties(${LIBNAME}_ocilib PROPERTIES COMPILE_FLAGS -fPIC)
 endif (LITESQL_WITH_OCILIB)
 
 
@@ -97,20 +107,21 @@ endif (LITESQL_WITH_OCILIB)
 # litesql_postgresql library
 ##############################################################################
 if (LITESQL_WITH_POSTGRES)
-  add_library(  ${LIBNAME}_postgresql STATIC
-                postgresql.cpp
+  add_library(${LIBNAME}_postgresql STATIC
+              postgresql.cpp
   )
+set_target_properties(${LIBNAME}_postgresql PROPERTIES COMPILE_FLAGS -fPIC)
 endif (LITESQL_WITH_POSTGRES)
 
 ##############################################################################
 # litesql_odbc library
 ##############################################################################
 if (LITESQL_WITH_ODBC)
-  add_library(  ${LIBNAME}_odbc STATIC
-                      odbc_backend.cpp
-                      odbc_backend.hpp
+  add_library(${LIBNAME}_odbc STATIC
+              odbc_backend.cpp
+              odbc_backend.hpp
   )
+set_target_properties(${LIBNAME}_odbc PROPERTIES COMPILE_FLAGS -fPIC)
 endif (LITESQL_WITH_ODBC)
 
 include_directories(../../src/library ../../include)
-
