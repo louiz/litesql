@@ -157,6 +157,10 @@ install(DIRECTORY include/ DESTINATION .
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/config.h 
 	DESTINATION include/litesql 
 	COMPONENT devel)
+install(DIRECTORY src/generator/ DESTINATION include/litesql
+  COMPONENT devel
+  FILES_MATCHING PATTERN "*.hpp"
+  PATTERN .svn EXCLUDE)
 
 add_subdirectory(src)
 
