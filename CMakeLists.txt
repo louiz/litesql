@@ -164,6 +164,9 @@ install(DIRECTORY src/generator/ DESTINATION include/litesql
 
 add_subdirectory(src)
 
+export(EXPORT litesql)
+install(EXPORT litesql DESTINATION LIBRARY)
+
 include(InstallRequiredSystemLibraries)
 
 set(CPACK_GENERATOR TGZ ZIP)
