@@ -164,8 +164,8 @@ install(DIRECTORY src/generator/ DESTINATION include/litesql
 
 add_subdirectory(src)
 
-export(EXPORT litesql)
-install(EXPORT litesql DESTINATION LIBRARY)
+export(EXPORT model)
+install(EXPORT model DESTINATION model.cmake)
 
 include(InstallRequiredSystemLibraries)
 
