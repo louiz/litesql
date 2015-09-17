@@ -75,9 +75,10 @@ if (LITESQL_WITH_SQLITE3)
                 sqlite3ext.h)
   endif(NOT SQLITE3_FOUND)
 
-add_library(${LIBNAME}_sqlite ${${LIBNAME}_sqlite_SRC})
-target_link_libraries(litesql sqlite3 ${EXPAT_LIBRARIES})
-set_target_properties(${LIBNAME}_sqlite PROPERTIES COMPILE_FLAGS -fPIC)
+  add_library(${LIBNAME}_sqlite STATIC
+    ${${LIBNAME}_sqlite_SRC})
+  target_link_libraries(litesql sqlite3 ${EXPAT_LIBRARIES})
+  set_target_properties(${LIBNAME}_sqlite PROPERTIES COMPILE_FLAGS -fPIC)
 endif (LITESQL_WITH_SQLITE3)
 
 
