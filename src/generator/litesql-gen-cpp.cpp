@@ -698,9 +698,12 @@ void writeObjBaseMethods(Class& cl, const xml::Object& o) {
     }
     if (o.parentObject.get()) 
         addUpdates.body(o.inherits + "::addUpdates(updates);");
-    gen::Method addIDUpdates("addIDUpdates", "void");    
-    addIDUpdates.protected_().virtual_()
-        .param(Variable("updates", "Updates&"));
+    gen::Method addIDUpdates("addIDUpdates", "void");
+    addIDUpdates.protected_().virtual_();
+    if (o.parentObject.get())
+      addIDUpdates.param(Variable("updates", "Updates&"));
+    else
+      addIDUpdates.param(Variable("", "Updates&"));
     if (o.parentObject.get()) {
         addIDUpdates
             .body("prepareUpdate(updates, table__);")
