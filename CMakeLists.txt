@@ -202,8 +202,6 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/config.h
 	COMPONENT devel)
 
 add_subdirectory(src)
- 
-project( ${PROJECT_NAME} )
 
 include(InstallRequiredSystemLibraries)
 
