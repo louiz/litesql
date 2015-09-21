@@ -1,9 +1,10 @@
 /* LiteSQL - test-datetime
- * 
- * The list of contributors at http://litesql.sf.net/ 
- * 
+ *
+ * The list of contributors at http://litesql.sf.net/
+ *
  * See LICENSE for copyright information. */
 
+#undef NDEBUG
 #include <assert.h>
 
 #include "litesql/datetime.hpp"
@@ -20,24 +21,24 @@ int main(int argc, char *argv[]) {
    std::string dtstring = dt.asString();
 
    DateTime dt2 = convert<const string&, DateTime>(dtstring);
-   
-   assert(dt.timeStamp() == dt2.timeStamp()); 
+
+   assert(dt.timeStamp() == dt2.timeStamp());
 
    // TC1 for Date
    Date d;
    std::string dstring = d.asString();
 
    Date d2 = convert<const string&, Date>(dstring);
-   
-   assert(d.timeStamp() == d2.timeStamp()); 
+
+   assert(d.timeStamp() == d2.timeStamp());
 
    // TC1 for Time
    Time t;
    std::string tstring = t.asString();
 
    Time t2 = convert<const string&, Time>(tstring);
-   
-   assert(t.secs() == t2.secs()); 
+
+   assert(t.secs() == t2.secs());
 
 
 
