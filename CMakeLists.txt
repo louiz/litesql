@@ -53,6 +53,7 @@ option(LITESQL_WITH_DOCS "generate Documentation" OFF)
 option(LITESQL_WITH_SAX_PARSER "use new SAX parser" ON)
 option(LITESQL_WITH_UI "build also GUI-Version of generator" OFF)
 option(LITESQL_WITH_TESTS "enable testing" ON)
+option(LITESQL_WITH_EXAMPLES "enable building of examples" OFF)
 option(CMAKE_SUPPRESS_REGENERATION "suppress rules to re-run cmake on changes (warning: no dependency checks!)?" OFF)
 
 
