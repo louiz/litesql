@@ -10,27 +10,28 @@
           inherits NMTOKEN #IMPLIED>
 
 <!ELEMENT field (value)*>
-<!ATTLIST field 
+<!ATTLIST field
           name NMTOKEN #REQUIRED
           type (boolean|integer|bigint|string|float|double|time|date|datetime|blob) #REQUIRED
           default CDATA #IMPLIED
           indexed (true|false) "false"
-          unique (true|false) "false">
+          unique (true|false) "false"
+          length CDATA>
 
 <!ELEMENT index (indexfield, (indexfield)+)>
-<!ATTLIST index 
+<!ATTLIST index
           unique (true|false) "false">
 <!ELEMENT indexfield EMPTY>
 <!ATTLIST indexfield
           name NMTOKEN #REQUIRED>
-          
+
 <!ELEMENT value EMPTY>
 <!ATTLIST value
           name NMTOKEN #REQUIRED
           value CDATA #REQUIRED>
 
 <!ELEMENT method (param)*>
-<!ATTLIST method 
+<!ATTLIST method
           name NMTOKEN #REQUIRED
           returntype CDATA 'void'>
 
@@ -38,14 +39,14 @@
 <!ATTLIST param
           name NMTOKEN #REQUIRED
           type CDATA #REQUIRED>
-          
+
 <!ELEMENT relation ((relate)*,(field)*,(index)*)>
 <!ATTLIST relation
           name NMTOKEN #IMPLIED
           id NMTOKEN #IMPLIED
           unidir (true|false) "false">
 
-                   
+
 <!ELEMENT relate EMPTY>
 <!ATTLIST relate
           unique (true|false) "false"
@@ -56,4 +57,3 @@
 <!ELEMENT include EMPTY>
 <!ATTLIST include
           name NMTOKEN #REQUIRED>
- 	  	 
