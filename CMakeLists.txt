@@ -8,6 +8,9 @@ enable_language(C)
 enable_language(CXX)
 
 OPTION(BUILD_SHARED_LIBS "Build shared libraries." ON)
+# Make sure the rpath inside the binaries points to the directory where the
+# libraries are installed
+SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 
 if (MSVC)
   option(LITESQL_MSVC_MT "link with /MT instead of /MD (use dlls versus static linked, change also wxWidgets_LIB_DIR)" ON) 
