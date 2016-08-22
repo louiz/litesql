@@ -105,6 +105,10 @@ public:
         sel.orderBy(f.fullName(), asc);
         return *this;
     }
+  DataSource& limit(int value) {
+       sel.limit(value);
+       return *this;
+  }
 };
 
 }
