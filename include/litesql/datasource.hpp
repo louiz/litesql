@@ -105,10 +105,14 @@ public:
         sel.orderBy(f.fullName(), asc);
         return *this;
     }
-  DataSource& limit(int value) {
-       sel.limit(value);
-       return *this;
-  }
+    DataSource& limit(int value) {
+        sel.limit(value);
+        return *this;
+    }
+    DataSource& where(const Expr& e) {
+        sel.where(e);
+        return *this;
+    }
 };
 
 }
