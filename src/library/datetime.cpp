@@ -305,6 +305,11 @@ DateTime convert<int, DateTime>(int value) {
     return DateTime(value);
 }
 
+template <>
+DateTime convert<long long, DateTime>(long long value) {
+    return DateTime(value);
+}
+
 template <> 
 DateTime convert<time_t, DateTime>(time_t value) { 
     return DateTime(value); 
