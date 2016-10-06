@@ -1253,7 +1253,7 @@ void CppGenerator::writeCPPClasses(const ObjectModel* model)
 
         gen::Method strMtd("operator<<", "std::ostream &");
         strMtd.param(Variable("os", "std::ostream&"))
-            .param(Variable("o", (*it_o)->name));
+            .param(Variable("o", (*it_o)->name + " const&"));
         Field::sequence flds;
         (**it_o).getAllFields(flds);
 
