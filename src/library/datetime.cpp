@@ -119,7 +119,7 @@ Date& Date::setTimeStamp(time_t t) {
 string Date::asString(string format) const {
     if (format == "%u") {
         char buf[32];
-        snprintf(buf, 32, "%lu", value);
+        snprintf(buf, 32, "%ld", value);
         return buf;
     }
     Split data(format, "%");
