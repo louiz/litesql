@@ -301,19 +301,19 @@ Time convert<int, Time>(int value) {
     return Time(value);
 }
 template <>
-DateTime convert<int, DateTime>(int value) {
+DateTime convert<int16_t, DateTime>(int16_t value) {
     return DateTime(value);
 }
 
 template <>
-DateTime convert<long long, DateTime>(long long value) {
+DateTime convert<int32_t, DateTime>(int32_t value) {
     return DateTime(value);
 }
 
-template <> 
-DateTime convert<time_t, DateTime>(time_t value) { 
-    return DateTime(value); 
-} 
+template <>
+DateTime convert<int64_t, DateTime>(int64_t value) {
+    return DateTime(value);
+}
 
 template <>
 std::string convert<const Date&, std::string>(const Date& value) {
