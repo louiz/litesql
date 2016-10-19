@@ -25,9 +25,5 @@ target_link_libraries (example litesql litesql-util ${BACKEND_LIBRARIES})
 
 set_property(TARGET example APPEND PROPERTY COMPILE_DEFINITIONS ${SQLITE3_DEFINITIONS})
 
-if (WIN32 AND MSVC)
-	set_property(TARGET example APPEND PROPERTY COMPILE_DEFINITIONS YY_NEVER_INTERACTIVE YY_NO_UNISTD_H)
-endif (WIN32 AND MSVC)
-
 include_directories(../library ${SQLITE3_INCLUDE_DIRS})
 

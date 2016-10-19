@@ -45,10 +45,6 @@ target_link_libraries (ddl2litesql litesql litesql-util model ${BACKEND_LIBRARIE
 
 if (LITESQL_WITH_UI)
   add_subdirectory(ui)
-# old stuff which does not work
-#  if (MSVC)
-#    add_subdirectory(win32-ui)
-#  endif(MSVC)
 endif(LITESQL_WITH_UI)
 
 install(TARGETS litesql-gen RUNTIME DESTINATION bin COMPONENT generator)

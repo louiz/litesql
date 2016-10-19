@@ -40,10 +40,6 @@ install(TARGETS ${LIBNAME} EXPORT ${LIBNAME}
             RUNTIME DESTINATION lib
             ARCHIVE DESTINATION lib
             COMPONENT devel)
-if (MSVC)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/debug/litesqld.lib DESTINATION lib
-    COMPONENT devel)
-endif(MSVC)
 
 ##############################################################################
 # litesql-util library

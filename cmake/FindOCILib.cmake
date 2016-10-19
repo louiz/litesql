@@ -35,22 +35,11 @@ else(OCILIB_INCLUDE_DIR AND OCILIB_LIBRARIES)
       ${PROGRAM_FILES_64}/OCILIB/*/include
       )
 
-if(WIN32 AND MSVC)
-  find_library(OCILIB_LIBRARIES NAMES ociliba
-      PATHS
-      $ENV{ProgramFiles}/OCILIB/*/lib/opt
-      $ENV{SystemDrive}/OCILIB/*/lib/opt
-      $ENV{SystemDrive}/OCILIB/*/lib
-      ${PROGRAM_FILES_32}/OCILIB/*/lib
-      ${PROGRAM_FILES_64}/OCILIB/*/lib
-      )
-else(WIN32 AND MSVC)
   find_library(OCILIB_LIBRARIES NAMES ocilib
       PATHS
       /usr/lib/OCILIB
       /usr/local/lib/OCILIB
       )
-endif(WIN32 AND MSVC)
 
   if(OCILIB_INCLUDE_DIR AND OCILIB_LIBRARIES)
     set(OCILIB_FOUND TRUE)

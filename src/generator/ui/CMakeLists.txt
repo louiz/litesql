@@ -60,11 +60,7 @@ if(wxWidgets_FOUND)
                                                     model 
                                                     ${EXPAT_LIBRARIES})
 
-    if (MSVC)
-        set_property(TARGET ${PROGRAM_visual_litesql} APPEND PROPERTY LINK_FLAGS /INCREMENTAL:NO) 
-        target_link_libraries(${PROGRAM_visual_litesql} gdiplus.lib)
-    endif(MSVC)
-    install(TARGETS ${PROGRAM_visual_litesql} 
+    install(TARGETS ${PROGRAM_visual_litesql}
                 RUNTIME DESTINATION bin 
                 BUNDLE DESTINATION /Applications)    
 
