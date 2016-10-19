@@ -34,7 +34,7 @@ set(litesql_SOURCES    database.cpp
             ../../include/litesql/datetime.hpp
 )
 add_library(${LIBNAME} ${litesql_SOURCES})
-target_link_libraries (litesql litesql-util ${BACKEND_LIBRARIES} ${EXPAT_LIBRARIES})
+target_link_libraries (litesql litesql-util ${BACKEND_LIBRARIES} ${EXPAT_LIBRARIES} pthread dl)
 install(TARGETS ${LIBNAME} EXPORT ${LIBNAME}
             LIBRARY DESTINATION lib
             RUNTIME DESTINATION lib
