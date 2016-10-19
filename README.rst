@@ -1,5 +1,6 @@
-LiteSQL 0.3.5 - C++ Object-Relational Persistence Framework
------------------------------------------------------------
+LiteSQL - C++ Object-Relational Persistence Framework
+-----------------------------------------------------
+
 LiteSQL is a C++ library that integrates C++ objects tightly to relational
 database and thus provides an object persistence layer. LiteSQL supports
 SQLite3, PostgreSQL and MySQL as backends. LiteSQL creates tables, 
@@ -12,15 +13,31 @@ checking at compile time.
 
 See HTML documentation for details docs/html/index.html.
 
-Project home page: http://litesql.sourceforge.net
+Project home page: https://lab.louiz.org/louiz/litesql
+
+
+Authors
+-------
+
+Project initiated by Tero Laitinen <tero.laitinen@iki.fi>
+
+Fork maintained by Florent Le Coz <louiz@louiz.org>
+
 
 Installation
 ------------
-./configure 
 
-make
+    mkdir build
+    cd build
+    cmake ..
+    make
 
-make install
 
+License
+-------
 
-By Tero Laitinen <tero.laitinen@iki.fi>
+LiteSQL is Free Software.
+(learn more: http://www.gnu.org/philosophy/free-sw.html)
+
+LiteSQL is released under the BSD 3-Clause license.
+Please read the LICENSE file for details.
