@@ -66,7 +66,7 @@ public:
        cq.clearResults();
        cq.limit(0).offset(0);
        cq.result("count(*)");
-       return atoi(db.query(cq)[0][0]);
+       return atoi(db.query(cq.asString())[0][0]);
     }
     /** returns SelectQuery which selects objects */
     SelectQuery objectQuery() const {
@@ -74,7 +74,7 @@ public:
     }
     /** returns cursor for query */
     Cursor<T> cursor() const {
-        return db.template cursor<T>(sel);
+        return db.template cursor<T>(sel.asString());
     }
     /** returns first object in result set. throw exception if none found 
      \return object of type T */

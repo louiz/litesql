@@ -40,7 +40,7 @@ vector<Database::SchemaItem> Database::getCurrentSchema() const {
     vector<SchemaItem> s;
     Records recs;
     try {
-        recs = query(sel);
+        recs = query(sel.asString());
     } catch (Except e) {
         return vector<Database::SchemaItem>();
     }

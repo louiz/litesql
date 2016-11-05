@@ -38,8 +38,7 @@ public:
     SelectQuery & having(const Expr & h);
     SelectQuery & having(std::string h);
     SelectQuery & orderBy(std::string ob, bool ascending=true);
-    operator std::string() const;
-    std::string asString() const { return this->operator std::string(); }
+    std::string asString() const;
 };
 }
 

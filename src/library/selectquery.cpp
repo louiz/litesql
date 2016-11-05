@@ -60,7 +60,7 @@ SelectQuery & SelectQuery::orderBy(std::string ob, bool ascending) {
     _orderBy.push_back(value); 
     return *this;
 }
-SelectQuery::operator string() const {
+std::string SelectQuery::asString() const {
     std::string res = "SELECT ";
     if (_distinct)
         res += "DISTINCT ";
