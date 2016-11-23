@@ -64,12 +64,6 @@ if (LITESQL_WITH_SQLITE3)
   set(${LIBNAME}_sqlite_SRC
                 sqlite3_backend.cpp
                 sqlite3.hpp)
-  if(NOT SQLITE3_FOUND)
-    list(APPEND ${LIBNAME}_sqlite_SRC
-                sqlite3.c
-                sqlite3.h
-                sqlite3ext.h)
-  endif(NOT SQLITE3_FOUND)
 
   add_library(${LIBNAME}_sqlite STATIC
     ${${LIBNAME}_sqlite_SRC})
