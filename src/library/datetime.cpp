@@ -316,6 +316,11 @@ DateTime convert<int64_t, DateTime>(int64_t value) {
 }
 
 template <>
+DateTime convert<long long, DateTime>(long long value) {
+    return DateTime(value);
+}
+
+template <>
 std::string convert<const Date&, std::string>(const Date& value) {
     return toString(value.timeStamp());
 }
