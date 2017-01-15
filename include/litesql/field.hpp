@@ -57,7 +57,10 @@ private:
 
 /** convert function */
 template <class From, class To>
-To convert(From value);
+To convert(From value)
+{
+  return To(value);
+};
 
 /** store function */
 template <class T>
