@@ -1,0 +1,52 @@
+stages:
+  - test
+  - deploy
+  - trigger
+
+test:
+  stage: test
+  tags:
+    - docker
+  image: docker.louiz.org/biboumi-test-fedora
+  script:
+    - uname -a
+    - locale
+    - whoami
+    - rm -rf build/
+    - mkdir build/
+    - cd build
+    - cmake ..
+    - make -j$(nproc || echo 1)
+    - make test
+
+build-fedora-docker:
+  stage: deploy
+  tags:
+    - docker-in-docker
+  only:
+    - branches@louiz/litesql
+  script:
+    - docker login -p $DOCKER_PASSWORD -u louiz -e none@none docker.louiz.org
+    - docker build -t docker.louiz.org/biboumi-test-fedora https://git.louiz.org/biboumi.git#master:docker/biboumi-test/fedora
+    - docker push docker.louiz.org/biboumi-test-fedora
+
+build-debian-docker:
+  tags:
+    - docker-in-docker
+  stage: deploy
+  only:
+    - branches@louiz/litesql
+  script:
+    - docker login -p $DOCKER_PASSWORD -u louiz -e none@none docker.louiz.org
+    - docker build -t docker.louiz.org/biboumi-test-debian https://git.louiz.org/biboumi.git#master:docker/biboumi-test/debian
+    - docker push docker.louiz.org/biboumi-test-debian
+
+trigger:biboumi:
+  stage: trigger
+  tags:
+    - docker
+  image: docker.louiz.org/biboumi-test-fedora
+  only:
+    - branches@louiz/litesql
+  script:
+    - curl -X POST -F token=$BIBOUMI_TRIGGER_TOKEN -F ref=master https://lab.louiz.org/api/v3/projects/1/trigger/builds
