@@ -60,7 +60,7 @@ template <class From, class To>
 To convert(From value)
 {
   return To(value);
-};
+}
 
 /** store function */
 template <class T>
@@ -207,6 +207,46 @@ template <>
 Blob convert<const std::string&, Blob>(const std::string& value);
 template <>
 std::string convert<const Blob&, std::string>(const Blob& value);
+template <> 
+std::string convert<int, std::string>(int value);
+template <> 
+std::string convert<bigint, std::string>(bigint value);
+template <>
+std::string convert<float, std::string>(float value);
+template <>
+std::string convert<double, std::string>(double value);
+template <> 
+std::string convert<const int&, std::string>(const int& value);
+template <> 
+std::string convert<const bigint&, std::string>(const bigint& value);
+template <>
+std::string convert<const float&, std::string>(const float& value);
+template <>
+std::string convert<const double&, std::string>(const double& value);
+template <>
+std::string convert<const bool&, std::string>(const bool& value);
+template <>
+int convert<const std::string&, int>(const std::string& value);
+template <>
+bool convert<const std::string&, bool>(const std::string& value);
+template <>
+bigint convert<const std::string&, bigint>(const std::string& value);
+template <>
+bool convert<int, bool>(int value);
+template <> 
+bigint convert<int, bigint>(int value);
+template <> 
+float convert<int, float>(int value);
+template <> 
+double convert<int,double>(int value);
+template <>
+float convert<double, float>(double value);
+template <>
+float convert<const std::string&, float>(const std::string& value);
+template <>
+double convert<const std::string&, double>(const std::string& value);
+template <>
+std::string convert<const std::string&, std::string>(const std::string& value);
 
 template <>
 class Field<Blob> {
